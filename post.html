@@ -23,7 +23,7 @@
 
     <br>
     <div class="viewpost" style="border: 1px solid gray;">
-        <h4 class="postheader">Viewing a post <button   onclick=" toggleEditMenu();">Edit</button></h4>
+        <h4 class="postheader">Viewing a post <button   onclick=" toggleEditMenu();">Edit</button> <button   onclick=" deletePost();">Delete</button></h4>
         <div class="postbody">
             <h4 id="postTitleView"> </h4>
             <p id="postContentView" style="white-space: pre-wrap; overflow-wrap: break-word;">
@@ -53,6 +53,16 @@
         <p>&copy; 2024 My Blog</p>
     </footer>
     <script>
+
+        function deletePost(){
+
+           if( confirm("Are you sure")){
+            let currentItem= document.getElementById("postTitleView").innerText
+            localStorage.removeItem(currentItem)
+            alert("deleted")
+            location = "/"
+           }
+        }
          function toggleViewMenu(){
             document.getElementsByClassName('viewpost')[0].style.display = 'block';
             document.getElementsByClassName('editpost')[0].style.display = 'none';

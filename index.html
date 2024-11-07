@@ -31,6 +31,7 @@
 
     <div class="allposts">
         <h4 class="postheader2">View All Posts</h4>
+        <a style=" width: 8rem; text-align: center; background-color:white; display: block; text-decoration: none; border: 1px solid; border-radius: 5px;" id="createPostLink" href="new-post.html">Create Post</a>
         <ul id="postList">
 
         </ul>
@@ -73,6 +74,7 @@
             let recent = [];
             Object.keys(localStorage).forEach(function (key) {
                 if( key !=="currentClicked") {
+                     
                 recent.push(localStorage.getItem(key));
 
 
@@ -91,6 +93,7 @@
 
                 ulEl.appendChild(newLi);
             }
+             
             });
             document.getElementById("latestPostContent").innerHTML = recent.slice(1)[0];
         }
