@@ -10,6 +10,7 @@ header {
 }
 
 .latestpost {
+    margin-top: 5rem;
     padding-left: 0;
     border: 1px solid gray;
 }
@@ -60,8 +61,11 @@ button {
     background-color: red;
 }
  
+.allposts{
 
-. 
+    margin-top: 3rem;
+}
+ 
 .displayname {
     border-radius: 10px;
     border: 1px solid #d7d7d7;
