@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Dynamic Blog Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to My Blog</h1>
+        <nav>
+            <ul class="topbar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="latestpost">
+        <h4 class="postheader">Recent Post </h4>
+        <div class="postbody">
+            <p id="latestPostContent"> This is a sample blog post.
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <div class="allposts">
+        <h4 class="postheader2">View All Posts</h4>
+        <ul id="postList">
+
+        </ul>
+
+
+    </div>
+    <footer>
+        <p>&copy; 2024 My Blog</p>
+    </footer>
+    <script>
+
+
+
+        function mockPosts() {
+
+
+            localStorage.setItem("post1", "This is from post1");
+            localStorage.setItem("post2", "This is from post1");
+            localStorage.setItem("post3", "This is from post1");
+            localStorage.setItem("post4", "This is from post1");
+
+        }
+
+        // let recentPost = posts.slice(-1);
+        //     localStorage.setItem("posts",JSON.stringify(posts))
+        //     storedPosts = JSON.parse(localStorage.getItem("posts"));
+        //     document.getElementById("latestPostContent").innerHTML = storedPosts.slice(-1)[0].content ;
+        // let posts =document.getElementsByClassName("posts")
+        // posts.addEventListener("click", function (event) {
+        //     let text = event.target.textContent;
+        //     alert(text)
+         
+        // });
+        function getclickedID(x) {
+            localStorage.setItem("currentClicked",x)
+
+
+        }
+        function populatePostList() {
+            let recent = [];
+            Object.keys(localStorage).forEach(function (key) {
+                if( key !=="currentClicked") {
+                recent.push(localStorage.getItem(key));
+
+
+                ulEl = document.getElementById("postList");
+
+
+                newLi = document.createElement("li");
+                newA = document.createElement("a")
+                newA.setAttribute('href', "/post.html");
+                newA.setAttribute('class', "posts");
+                newA.setAttribute('onclick', "getclickedID(this.text)");
+                newA.textContent = key
+                newLi.appendChild(newA)
+
+
+
+                ulEl.appendChild(newLi);
+            }
+            });
+            document.getElementById("latestPostContent").innerHTML = recent.slice(1)[0];
+        }
+
+
+        function clearStorage() {
+
+
+            window.localStorage.clear();
+
+        }
+
+        populatePostList()
+    </script>
+</body>
+
+</html>
