@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Dynamic Blog Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to My Blog </h1>
+        <nav>
+            <ul class="topbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <br>
+    <div class="viewpost" style="border: 1px solid gray;">
+        <h4 class="postheader">Viewing a post <button   onclick=" toggleEditMenu();">Edit</button></h4>
+        <div class="postbody">
+            <h4 id="postTitleView"> </h4>
+            <p id="postContentView" style="white-space: pre-wrap; overflow-wrap: break-word;">
+            
+            </p>
+
+        </div>
+    </div>
+    <div class="editpost" style="display: none; border: 1px solid gray;;">
+        <h4 class="postheader" style="background-color: #789622;">Editing a Post <button   onclick=" toggleViewMenu();">Cancel Edit</button> </h4>
+        <div class="postbody">
+            <form action="" onsubmit="return savePost()" >
+                <div class="titleLabel">Title</div>
+                <div class="titleinput"><input type="text" id="postTitle" required></div>
+                <div class="ContentLabel">Content</div>
+                <div class="ContentTextArea"> <textarea id="postContent" required></textarea></div>
+                <div class="imgLabel">Choose a picture</div>
+                <div class="image"><input type="file" id="imageInput" accept="image/png, image/jpeg"></div>
+                <button type="button" id="clearBtn">Clear</button>
+                <button type="submit"   id="submitBtn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2024 My Blog</p>
+    </footer>
+    <script>
+         function toggleViewMenu(){
+            document.getElementsByClassName('viewpost')[0].style.display = 'block';
+            document.getElementsByClassName('editpost')[0].style.display = 'none';
+             
+        }
+        function toggleEditMenu(){
+            document.getElementsByClassName('editpost')[0].style.display = 'block';
+            document.getElementsByClassName('viewpost')[0].style.display = 'none';
+             
+        }
+
+        function getclickedID(x) {
+            localStorage.setItem("currentClicked", x)
+            
+
+        }
+        function retrievePost() {
+
+            let postId = localStorage.getItem("currentClicked")
+
+            let postContent = localStorage.getItem(postId)
+            document.getElementById("postTitleView").innerHTML = postId
+            document.getElementById("postContentView").innerHTML = postContent
+
+            document.getElementById("postTitle").value = postId
+            document.getElementById("postContent").value = postContent
+
+        }
+
+        function savePost() {
+            let postTitle = document.getElementById("postTitle").value;
+            let postContent = document.getElementById("postContent").value;
+
+            window.localStorage.setItem(postTitle, postContent)
+            alert("Saved");
+            location.reload();
+        }
+
+
+
+
+
+
+        function clearStorage() {
+
+
+            window.localStorage.clear();
+
+        }
+        retrievePost()
+
+    </script>
+</body>
+
+</html>
