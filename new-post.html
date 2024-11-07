@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Dynamic Blog Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to My Blog </h1>
+        <nav>
+            <ul class="topbar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <br>
+    <div class="latestpost">
+        <h4 class="postheader">Create a Post </h4>
+        <div class="postbody">
+            <form action="#" onsubmit="return savePost()" >
+                <div class="titleLabel">Title</div>
+                <div class="titleinput"><input type="text" id="postTitle" required></div>
+                <div class="ContentLabel">Content</div>
+                <div class="ContentTextArea"> <textarea id="postContent" required></textarea></div>
+                <div class="imgLabel">Choose a picture</div>
+                <div class="image"><input type="file" id="imageInput" accept="image/png, image/jpeg"></div>
+                <button type="button" id="clearBtn">Clear</button>
+                <button type="submit"   id="submitBtn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2024 My Blog</p>
+    </footer>
+    <script>
+
+        
+        function savePost() {
+            let postTitle = document.getElementById("postTitle").value;
+            let postContent = document.getElementById("postContent").value;
+            
+            window.localStorage.setItem(postTitle, postContent)
+            alert("Saved");
+        }
+
+
+
+
+         
+
+        function clearStorage() {
+
+
+            window.localStorage.clear();
+
+        }
+
+
+    </script>
+</body>
+
+</html>
