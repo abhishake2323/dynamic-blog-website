@@ -1,0 +1,12 @@
+Information:
+1. Created three main pages: index.html (Homepage), new-post.html (Create Post), and post.html (View/Edit Post).
+2. index.html is a entry page which displays available blog post names created by user
+3. new-post.html is for catering the creation of a new post 
+4. post.html is for displaying a clicked post item from index.html with much detail.
+
+Plan:
+step 1: Create index.html Homepage with styling  
+step 2: Create new-post.html content with styling to enable feature to create operation controlled by javascript - code specific block for performing create
+step 3: create post.html for showing post with detail and also edit feature
+step 4: Create delete fearture options available in Homepage when user wants to delete a specific post 
+step 5: Making whole application responsive using css.
