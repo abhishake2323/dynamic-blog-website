@@ -13,7 +13,7 @@
         <h1>Welcome to My Blog </h1>
         <nav>
             <ul class="topbar">
-                <li><a href="/">Home</a></li>
+                <li><a id="homepage" href="/">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -60,7 +60,8 @@
             let currentItem= document.getElementById("postTitleView").innerText
             localStorage.removeItem(currentItem)
             alert("deleted")
-            location = "/"
+            document.getElementById("homepage").click()
+             
            }
         }
          function toggleViewMenu(){
@@ -98,7 +99,7 @@
 
             window.localStorage.setItem(postTitle, postContent)
             alert("Saved");
-            location.reload();
+            document.getElementById("homepage").click()
         }
 
 
